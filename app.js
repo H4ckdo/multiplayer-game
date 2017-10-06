@@ -3,6 +3,7 @@ const express 	= require('express');
 const app 			= new express;
 const	servr 		= require('http').Server(app);
 
+
 //Request handler
 let resolve = (req, res) => {
 	res.sendFile(path.join(__dirname, 'client', 'index.html'))
@@ -16,17 +17,26 @@ servr.listen(4000, () => {
 });
 
 
-const io = require('socket.io')(servr, {});
+const io 					= require('socket.io')(servr, {});
+const socketList 	= require('./server/game/socket-list');
+const gameLoop		= require('./server/game/game-loop');
+
 
 io.sockets.on('connection', socket => {
-	console.log('there is a new conected user: ');
-	
-	socket.emit('hi', {
-		userName: 'Fredye'
-	});
+	socket.id = Math.random();
+	socket.x 	= 0;
+	socket.y 	= 0;
+	socketList[socket.id] = socket;
 
 	socket.on('scoreChange', score => {
 		console.log('the score has been saved: ', score.addition);
 	});
 
+	socket.on("disconnect", () => {
+		delete socketList[socket.id];
+	});
+
+	gameLoop(socketList);
+
 });
+
