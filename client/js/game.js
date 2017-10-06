@@ -24,9 +24,3 @@ const Game = Object.create({
 
 	update: function(){},
 });
-
-// Start the main app logic.
-/*requirejs(['client/js/vendors/socket-io.js'],
-    function (io) {
-    }
-);*/
