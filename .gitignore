@@ -1,0 +1,4 @@
+#ignore the next directories and files
+
+node_modules/
+package-lock.json
