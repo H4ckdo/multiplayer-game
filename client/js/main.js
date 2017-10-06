@@ -6,7 +6,13 @@ requirejs.config({
 });
 
 // Start the main app logic.
-requirejs(['client/js/vendors/socket-io.js','client/js/game.js', 'client/js/game-packages.js'],
+requirejs([
+            'client/js/vendors/socket-io.js',
+            'client/js/game.js',
+            'client/js/game-packages.js',
+            'client/js/player.js',
+          ],
+    
     function (io, game, gamePackages) {
         Game.start();
         Game.socket = io();

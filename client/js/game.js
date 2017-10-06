@@ -3,6 +3,7 @@ const Game = Object.create({
 		this.canvas 				= document.createElement('canvas');
 		this.canvas.width 	= 600;
 		this.canvas.height 	= 400;
+		this.canvas.style 	= 'border: 1px';
 		this.main						= document.getElementById('main');
 
 		this.ctx = this.canvas.getContext('2d');
