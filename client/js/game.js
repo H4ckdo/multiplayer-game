@@ -5,6 +5,7 @@ const Game = Object.create({
 		this.canvas.height 	= 400;
 		this.canvas.style 	= 'border: 1px';
 		this.main						= document.getElementById('main');
+		this.canvas.style.border = "1px solid black";
 
 		this.ctx = this.canvas.getContext('2d');
 		this.main.appendChild(this.canvas);
@@ -19,7 +20,7 @@ const Game = Object.create({
 	start: function(){
 		this.initialize();
 		this.settings();
-		console.log('the game was started');
+		console.log('running game');
 	},
 
 	update: function(){},
